@@ -2,7 +2,7 @@ Flow chart:
 
 ```mermaid
 graph LR
-X[0 7 * * * php /backend/services.php] -->
+X[(cron: 0 7 * * * php /backend/services.php)] -->
 A[Služba] --> B(Expirácia - 7 a -30 dní != dnešný dátum ?)
 B --> C[Nič sa nestane]
 A --> D(Expirácia - 7 a -30 dní == dnešný dátum ?)
