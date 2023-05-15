@@ -31,6 +31,7 @@ if ($data) {
         <h1>Vaša služba onedlho vyprší</h1> 
         <h2>Prajete si ju predĺžiť?</h2>
           <a href="http://localhost/UKF/SJ/EmailNotifications/email_answer_positive.php?service=' . $row['id_service'] . '">Áno</a>
+          <a href="http://localhost/UKF/SJ/EmailNotifications/email_answer_negative.php?service=' . $row['id_service'] . '">Nie</a>
     </body> 
     </html>';
     $headers = "MIME-Version: 1.0" . "\r\n";
