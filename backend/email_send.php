@@ -4,42 +4,35 @@ require('database.php');
 function setDate($success, $row, $db)
 {
   $current_date = date('Y-m-d');
-  $query = "UPDATE mail_queue SET date_sent = ?, sending_result = ? WHERE id_queue = ?";
+  $query = "UPDATE email_queue SET date_sent = ?, sending_result = ? WHERE id_queue = ?";
   $query_run = $db->conn->prepare($query);
   $query_run->bind_param('sis', $current_date, $success, $row['id_queue']);
   $query_run->execute();
 }
 
 $db = new Database();
-$query = "SELECT * FROM mail_queue WHERE date_sent is NULL or sending_result = 0 LIMIT 100";
+$query = "SELECT * FROM email_queue inner join services 
+on email_queue.id_service = services.id_service
+WHERE date_sent is NULL or sending_result = 0 LIMIT 100";
 $data = $db->getData($query);
 
-$htmlContent = ' 
+
+
+if ($data) {
+  foreach ($data as $row) {
+    $to = $row['customer_email'];
+    $subject = $row['mail_subject'];
+    $htmlContent = ' 
     <html> 
     <head> 
         <title>Welcome to CodexWorld</title> 
     </head> 
     <body> 
         <h1>Vaša služba onedlho vyprší</h1> 
-        <table cellspacing="0" style="border: 2px dashed #FB4314; width: 100%;"> 
-            <tr> 
-                <th>Name:</th><td>CodexWorld</td> 
-            </tr> 
-            <tr style="background-color: #e0e0e0;"> 
-                <th>Email:</th><td>contact@codexworld.com</td> 
-            </tr> 
-            <tr> 
-                <th>Website:</th><td><a href="http://www.codexworld.com">www.codexworld.com</a></td> 
-            </tr> 
-        </table> 
+        <h2>Prajete si ju predĺžiť?</h2>
+          <a href="http://localhost/UKF/SJ/EmailNotifications/email_answer_positive.php?service=' . $row['id_service'] . '">Áno</a>
     </body> 
     </html>';
-
-if ($data) {
-  foreach ($data as $row) {
-    $to = $row['mail_to'];
-    $subject = $row['mail_subject'];
-    // $message = $row['mail_text'];
     $headers = "MIME-Version: 1.0" . "\r\n";
     $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
     $headers .= 'From: notifikacie@ukf.sk' . "\r\n" .

@@ -43,7 +43,7 @@ H--False-->K[Nič sa nestane]
 | Column         | Type     | Description                                                      |
 | -------------- | -------- | ---------------------------------------------------------------- |
 | id_queue       | INTEGER  | Queue ID (Primary Key)                                           |
-| mail_to        | VARCHAR  | Email address to send the mail to                                |
+| id_service     | INTEGER  | Service ID (Foreign Key)                                         |
 | mail_subject   | VARCHAR  | Subject of the email                                             |
 | mail_text      | TEXT     | Content of the email                                             |
 | date_sent      | DATETIME | Date and time when the email was sent                            |

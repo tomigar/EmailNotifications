@@ -29,10 +29,10 @@ include 'backend/database.php';
 
 <body>
 	<div class="container">
-		<h1 class="my-5">Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Welcome to our site.</h1>
+		<h1 class="my-5">Dobrý deň, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Vitajte na stránke.</h1>
 		<p>
-			<a href="authentication/reset-password.php" class="btn btn-warning">Reset Your Password</a>
-			<a href="authentication/logout.php" class="btn btn-danger ml-3">Sign Out of Your Account</a>
+			<a href="authentication/reset-password.php" class="btn btn-warning">Resetovať heslo</a>
+			<a href="authentication/logout.php" class="btn btn-danger ml-3">Odhlásiť sa</a>
 		</p>
 		<p id="success"></p>
 		<div class="table-wrapper">
