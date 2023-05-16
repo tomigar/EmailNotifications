@@ -30,7 +30,7 @@ if ($data) {
         <title>Welcome to CodexWorld</title> 
     </head> 
     <body> 
-        <h1>Vaša služba onedlho vyprší</h1> 
+        <h1>Vaša služba <b>' . $row['service_name'] . '</b> onedlho vyprší</h1> 
         <h2>Prajete si ju predĺžiť?</h2>
           <a href="http://localhost/UKF/SJ/EmailNotifications/email_answer_positive.php?service=' . $row['id_service'] . '">Áno</a>
           <a href="http://localhost/UKF/SJ/EmailNotifications/email_answer_negative.php?service=' . $row['id_service'] . '">Nie</a>

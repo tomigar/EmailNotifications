@@ -72,7 +72,8 @@ include 'backend/database.php';
 					$db = new Database();
 					$query = "SELECT * FROM services";
 					$data = $db->getData($query);
-					foreach ($data as $row) {
+					if ($data)
+						foreach ($data as $row) {
 					?>
 						<tr id="<?php echo $row["id_service"]; ?>">
 							<td>
@@ -94,7 +95,7 @@ include 'backend/database.php';
 							</td>
 						</tr>
 					<?php
-					}
+						}
 					?>
 				</tbody>
 			</table>

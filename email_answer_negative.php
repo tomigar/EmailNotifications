@@ -8,10 +8,9 @@ require('backend/database.php');
 $db = new Database();
 $query = "SELECT * FROM services WHERE id_service = {$params['service']}";
 $service = $db->getData($query);
-$service = $service[0];
 $query = "DELETE FROM services WHERE id_service = ?";
 $query_run = $db->conn->prepare($query);
-$query_run->bind_param('i', $service['id_service']);
+$query_run->bind_param('i', $service[0]['id_service']);
 $query_run->execute();
 ?>
 
