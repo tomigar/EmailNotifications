@@ -11,10 +11,12 @@ function setDate($success, $row, $db)
 }
 
 $db = new Database();
-$query = "SELECT * FROM email_queue inner join services 
+$query = "SELECT * FROM email_queue 
+inner join services 
 on email_queue.id_service = services.id_service
 WHERE date_sent is NULL or sending_result = 0 LIMIT 100";
 $data = $db->getData($query);
+
 
 
 

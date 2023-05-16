@@ -37,7 +37,6 @@ if ($data) {
       $query_run = $db->conn->prepare($query);
       $query_run->bind_param('ss', $formatted_date_expiration_add, $row['id_service']);
       $query_run->execute();
-      echo $formatted_date_expiration_add;
     }
   }
 }
