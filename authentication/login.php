@@ -8,7 +8,6 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
     exit;
 }
 
-// Include db config file
 require_once '../backend/database.php';
 
 // Define variables and initialize with empty values
